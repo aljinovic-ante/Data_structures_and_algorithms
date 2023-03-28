@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+/*
+int* filtriraj(int *niz, int n, int th, int *nth) – vraća novi niz koji sadrži brojeve iz originalnog niza koji su manji od th. 
+Originalni niz ima dužinu n. Dužinu novog niza sa brojevima koji su prošli filter treba spremiti u nth.
+*/
+
+int* filtriraj(int* niz, int n, int th, int* nth)
+{
+	int i, j=0;
+	int* novi_niz = (int*)malloc(sizeof(int) * n);
+	for (i = 0; i < n; i++)
+	{
+		if (*(niz + i) < th)
+		{
+			*(novi_niz + j) = *(niz + i);
+			j++;
+			*nth=*nth + 1;
+		}
+
+	}
+	return novi_niz;
+}
+
+int main()
+{
+	int niz[] = { 1,-1,2,-2,3,-3,4,-4,5,-5 };
+	int n = sizeof(niz) / sizeof(niz[0]);
+	int th = 0;
+	int nth=0;
+	int* novi_niz = filtriraj (niz,  n,  th,  &nth);
+
+	for (int i = 0; i < 5; i++)
+	{
+		printf("%d ", novi_niz[i]);
+	}
+
+}
